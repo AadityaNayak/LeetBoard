@@ -36,7 +36,8 @@ app.post('/sendRequest', async (req, res) => {
     try {
         // Making the POST request to LeetCode
         const response = await axios.post(url, graphqlQuery, { headers: headers });
-        const log = {username : response.data};
+        const log = {}
+        log[`${username}`] = response.data;
         console.log(log);
         console.log("\n" + "--------------------------------------------------------------------------------------" + "\n")
         return res.send(response.data);
