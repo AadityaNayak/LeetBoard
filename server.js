@@ -36,9 +36,10 @@ app.post('/sendRequest', async (req, res) => {
     try {
         // Making the POST request to LeetCode
         const response = await axios.post(url, graphqlQuery, { headers: headers });
-        console.log(res.json(response.data));
-        // Return the response from LeetCode
-        return res.json(response.data);
+        const log = {username : response.data};
+        console.log(log);
+        console.log("\n" + "--------------------------------------------------------------------------------------" + "\n")
+        return res.send(response.data);
     } catch (error) {
         console.error("Error making POST request:", error);
         return res.status(500).json({ error: "Internal Server Error" });
